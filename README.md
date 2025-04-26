@@ -1,4 +1,4 @@
-# **CO2 Emissions by vehicles**  
+# ** Börsenkurs Vorhersage **  
 **Using ML and data science to analyze emission factors and pinpointing technical characteristics of cars which contribute to pollution.**
 
 ==============================
@@ -16,27 +16,7 @@
 ==============================
 
 ## **1. Overview**  
-This project aims to analyze vehicle CO2 emissions using machine learning and data science techniques. It includes exploratory data analysis, modeling, and visualization techniques to derive insights from the data and predict emission levels based on vehicle characteristics.
 
-### *Project Purpose*
-- Car emissions remain the highest compared to other sectors in the EU.
-- Using ML and data science to analyze emission factors.
-- Pinpointing technical characteristics of cars which contribute to pollution.
-
-### *Economic Benefits*
-- Preventing the introduction & development of high-pollution vehicle types
-  - Avoiding penalties for non-compliance with CO₂ regulations
-- Reducing redesign costs by optimizing vehicle development
-  - Efficient production strategies
-  - Enabling competitive pricing
-- Boosting brand reputation with eco-friendly recognition
-
-### *Technical Goals & Scientific Contribution*
-- Data mining, engineering, select features, train, and evaluate models
-- Identifying emission-related data patterns
-- Focus on CO₂ emissions during operation
-- Correlate vehicle features with CO₂ emissions
-- Predict emissions from technical characteristics
 
 ==============================
 
@@ -47,9 +27,37 @@ This project aims to analyze vehicle CO2 emissions using machine learning and da
     ├── LICENSE
     ├── README.md          <- The top-level README for developers using this project.
     ├── data               <- Should be in your computer but not on Github (only in .gitignore)
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
+    │    ├── external/  # Rohdaten von APIs (z.B. AlphaVantage, Yahoo Finance) [1][3]
+    │    ├── raw/       # Unveränderte Originaldaten
+    │    ├── processed/ # Bereinigte Daten für Modelleingaben
+    │    └── interim/   # Zwischendatensätze während der Transformation
+    
+    api/
+├── client.py         # API-Client für Datenabruf (Authentifizierung, Request-Handling)
+├── data_schemas.py   # Datenvalidierungsschemata
+└── endpoints/        # Konfiguration spezifischer Finanz-APIs [1][5]
+
+src/
+├── preprocessing/    # Feature-Engineering und Datenpipelining
+├── models/
+│   ├── train.py      # Modelltraining mit Hyperparameter-Tuning
+│   └── predict.py    # Echtzeitvorhersagen [1][4]
+├── evaluation/       # Backtesting und Performance-Metriken
+└── utils/            # Hilfsfunktionen für Datentransformation
+
+notebooks/            # Jupyter-Notebooks für EDA und Prototyping [3][4]
+models/               # Serialisierte Modelle (Pickle/Joblib)
+config/               # YAML/JSON-Konfigurationen für API-Keys und Modelle
+requirements.txt      # Python-Abhängigkeiten
+
+tests/
+├── unit/       # Modul-Tests
+└── integration/ # API- und Modellintegrationstests
+reports/        # Performance-Metriken und Visualisierungen [4]
+
+
+####### Original Data Struktur 
+    
     ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
