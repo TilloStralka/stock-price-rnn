@@ -1,5 +1,5 @@
 # ** Börsenkurs Vorhersage **  
-**Using ML and data science to analyze emission factors and pinpointing technical characteristics of cars which contribute to pollution.**
+**Using ML to predict aktien kurse. Anzapfen von aktien kursen via einer API, ETL prozesse und speichern von raw und veränderten daten. Training eines RNN um eine zeitreihen analyse durch zu führen und eine prediciton ab zu geben. Evaluation im nachgang: 'Was wäre passiert wenn ich investiert hätte' und bei einem Schwellen wert wieder verkauft hätte. Zu guter letzte eine automatisierung des scripts mittels eines shell-scripts / cronjobs welches automatische in regelmäßigen abständen den Prozess ausführt.**
 
 ==============================
 
@@ -23,37 +23,51 @@
 
 ## **2. Project Structure**
 ------------
+stock-rnn-prediction/
+    ├── data/                      # Roh- und Verarbeitete Daten
+    │   ├── raw/                  # Unveränderte API-Daten
+    │   ├── processed/            # Bereinigte, normalisierte Daten
+    │   └── predictions/          # Modellvorhersagen
+    │
+    ├── notebooks/                # Explorative Jupyter Notebooks
+    │   └── analysis.ipynb
+    │
+    ├── models/                   # Gespeicherte RNN-Modelle
+    │   └── rnn_model.h5
+    │
+    ├── reports/                  # Ergebnisse, Visualisierungen
+    │   └── trades_summary.csv
+    │
+    ├── scripts/                  # Shell- und Automatisierungsskripte
+    │   └── update_data.sh
+    │
+    ├── src/                      # Quellcode
+    │   ├── api/                  # API-Zugriff
+    │   │   └── fetch_data.py
+    │   │
+    │   ├── etl/                  # Extraktion, Transformation, Laden
+    │   │   ├── transform.py
+    │   │   └── load.py
+    │   │
+    │   ├── model/                # RNN-Modelle und Training
+    │   │   ├── rnn_model.py
+    │   │   └── train.py
+    │   │
+    │   ├── utils/                # Hilfsfunktionen, Logging, etc.
+    │   │   └── helpers.py
+    │   │
+    │   ├── evaluation/           # Auswertung: Buy/Sell-Strategie
+    │   │   └── strategy_eval.py
+    │   │
+    │   └── main.py               # Einstiegspunkt, orchestriert alles
+    │
+    ├── config/                   # Konfigurationsdateien
+    │   └── settings.yaml
+    │
+    ├── requirements.txt          # Abhängigkeiten
+    ├── README.md                 # Projektbeschreibung
+    └── .gitignore
 
-    ├── LICENSE
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data               <- Should be in your computer but not on Github (only in .gitignore)
-    │    ├── external/  # Rohdaten von APIs (z.B. AlphaVantage, Yahoo Finance) [1][3]
-    │    ├── raw/       # Unveränderte Originaldaten
-    │    ├── processed/ # Bereinigte Daten für Modelleingaben
-    │    └── interim/   # Zwischendatensätze während der Transformation
-    
-    api/
-├── client.py         # API-Client für Datenabruf (Authentifizierung, Request-Handling)
-├── data_schemas.py   # Datenvalidierungsschemata
-└── endpoints/        # Konfiguration spezifischer Finanz-APIs [1][5]
-
-src/
-├── preprocessing/    # Feature-Engineering und Datenpipelining
-├── models/
-│   ├── train.py      # Modelltraining mit Hyperparameter-Tuning
-│   └── predict.py    # Echtzeitvorhersagen [1][4]
-├── evaluation/       # Backtesting und Performance-Metriken
-└── utils/            # Hilfsfunktionen für Datentransformation
-
-notebooks/            # Jupyter-Notebooks für EDA und Prototyping [3][4]
-models/               # Serialisierte Modelle (Pickle/Joblib)
-config/               # YAML/JSON-Konfigurationen für API-Keys und Modelle
-requirements.txt      # Python-Abhängigkeiten
-
-tests/
-├── unit/       # Modul-Tests
-└── integration/ # API- und Modellintegrationstests
-reports/        # Performance-Metriken und Visualisierungen [4]
 
 
 ####### Original Data Struktur 
