@@ -6,12 +6,7 @@
 ## **Table of Contents**  
 1. [Overview](#overview)  
 2. [Project Structure](#project-structure)  
-3. [Dataset](#dataset)  
-4. [Installation](#installation)  
-5. [Usage](#usage)  
-6. [Results](#results)  
-7. [Contributing](#contributing)  
-8. [License](#license)  
+3. [Dataset] usw 
 
 ==============================
 
@@ -67,38 +62,6 @@ stock-rnn-prediction/
     ├── requirements.txt          # Abhängigkeiten
     ├── README.md                 # Projektbeschreibung
     └── .gitignore
-
-
-
-####### Original Data Struktur 
-    
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's name, and a short `-` delimited description, e.g.
-    │                         `1.0-alban-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, links, and all other explanatory materials.
-    │
-    ├── reports            <- The reports which summarize the project
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   ├── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │   │   └── visualize.py
 
 ==============================
 
@@ -167,88 +130,23 @@ For any modifications to the processing or modeling pipeline, ensure that change
 
 ## **6. Results**
 
-### Model Performance Metrics
 
-The following metrics were evaluated across three models:
-
-- **XG Boost** (Best Overall Performance):
-    - Test MSE (scaled): 0.02
-    - Test MSE: 25.1
-    - Test RMSE: 5.0
-    - Test MAE: 3.7
-    - Test R²: 0.97
-    - CV R²: 0.97
-    - Training time: 1.41 mins
-
-- **Dense Neural Network**:
-    - Test MSE (scaled): 0.06
-    - Test MSE: 64.0
-    - Test RMSE: 8.0
-    - Test MAE: 6.2
-    - Test R²: 0.93
-    - Training time: 0.26 mins
-
-- **Linear Regression**:
-    - Test MSE (scaled): 0.12
-    - Test MSE: 120.5
-    - Test RMSE: 11.0
-    - Test MAE: 8.3
-    - Test R²: 0.87
-    - CV R²: 0.87
-    - Training time (mins): 7.07
 
 ### Model Analysis
 
-1. **XGBoost** emerged as the optimal choice, demonstrating:
-    - Superior predictive accuracy with lowest error metrics
-    - Excellent handling of non-linear relationships
-    - Strong balance between performance and computational efficiency
 
-2. **Dense Neural Network** showed promise with:
-    - Fast training speed
-    - Strong R² score of 0.93
-    - Potential for improvement through overfitting prevention
-
-3. **Linear Regression**, while most interpretable:
-    - Provided baseline performance
-    - Limited by linear assumptions
-    - Required longest training time
-
-### Model Performance
-
-- **XGBoost**:
-    - Achieved the best predictive accuracy.
-    - Lowest Mean Squared Error (MSE) and highest R-squared.
-    - Effectively captures non-linear relationships.
-    - Provides an optimal balance of performance and efficiency.
-
-- **Dense Neural Network (DNN)**:
-    - A strong contender with fast training and high R-squared.
-    - Requires further fine-tuning to prevent overfitting.
-
-- **Linear Regression**:
-    - Offers simplicity and interpretability.
-    - Underperforms relative to XGBoost and DNN.
 
 **Recommendation**: XGBoost 
 
 ### Outlook and Improvements
 
-- **Ensemble Learning**: Combining Linear Regression, XGBoost, and Dense Neural Networks for improved predictions.
-- **Hyperparameter Tuning**: Leveraging techniques like Bayesian Optimization for XGBoost and DNN.
-- **Advanced Architectures**: Experimenting with CNNs or Residual Connections to boost model performance.
-- **Data Augmentation**: Using methods like SMOTE to address class imbalances.
 
 
 ==============================
 
 ## **7. Contributing**
 
-This project was developed as part of the Data Scientist certification program at DataScientest.com, certified by Université Paris Panthéon-Sorbonne. The following team members contributed equally to this project:
-
-- [Operator-12](https://github.com/Operator-12)
-- [Alexander Peca](https://github.com/Alexander-Peca)
-- [Shanthi Dev](https://github.com/ShanthiDev)
+This project was solemnly set up, idea and finalizes by me and myselfe. Got only help by perplexity and chaaaat. 
 
 ==============================
 
