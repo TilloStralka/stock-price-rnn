@@ -65,7 +65,7 @@ stock-rnn-prediction/
 ==============================
 
 ## **3. Dataset**
-The project uses the EU (EEA) dataset "CO2 emissions from new passenger cars" from 2010-2023, covering 30 countries. Originally over 16 GB, it was reduced via data transformation. [Source](https://www.eea.europa.eu/data-and-maps/data/co2-emissions-from-new-passenger-cars-1)
+The data comes from the api ... bla bla bla doku füllen . [Source](https://www.eea.europa.eu/data-and-maps/data/co2-emissions-from-new-passenger-cars-1)
 
 ==============================
 
