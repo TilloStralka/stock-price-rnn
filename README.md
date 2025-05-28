@@ -19,12 +19,13 @@
 ## **2. Project Structure**
 ------------
 stock-rnn-prediction/
-    ├── data/                      # Roh- und Verarbeitete Daten
-    │   ├── raw/                  # Unveränderte API-Daten
-    │   ├── processed/            # Bereinigte, normalisierte Daten
-    │   └── predictions/          # Modellvorhersagen
+    ├── data/                               # Roh- und Verarbeitete Daten
+    │   ├── raw/                            # Unveränderte API-Daten
+    │   ├── processed/                      # Bereinigte, normalisierte Daten
+    │   └── predictions/                    # Modellvorhersagen
     │
-    ├── notebooks/                # Explorative Jupyter Notebooks
+    ├── notebooks/                          # Explorative Jupyter Notebooks
+    │   ├── collect_data_api.ipynb          # Notebook welches die daten von der API zieht 
     │   └── analysis.ipynb
     │
     ├── models/                   # Gespeicherte RNN-Modelle
@@ -56,11 +57,9 @@ stock-rnn-prediction/
     │   │
     │   └── main.py               # Einstiegspunkt, orchestriert alles
     │
-    ├── config/                   # Konfigurationsdateien
-    │   └── settings.yaml
-    │
     ├── requirements.txt          # Abhängigkeiten
     ├── README.md                 # Projektbeschreibung
+    ├── .env                      # Konfigurationsdateien
     └── .gitignore
 
 ==============================
