@@ -17,6 +17,7 @@
 
 
 ## **2. Project Structure**
+```text
 ------------
 stock-rnn-prediction/
     ├── data/                               # Roh- und Verarbeitete Daten
@@ -57,13 +58,14 @@ stock-rnn-prediction/
     │   │
     │   └── main.py               # Einstiegspunkt, orchestriert alles
     │
-    ├── test/                      # Test functionen der einzelnen functionen
+    ├── test/                     # Test functionen der einzelnen functionen
     │   └── test_utils.py
     │
     ├── requirements.txt          # Abhängigkeiten
     ├── README.md                 # Projektbeschreibung
     ├── .env                      # Konfigurationsdateien
     └── .gitignore
+```
 
 ==============================
 
