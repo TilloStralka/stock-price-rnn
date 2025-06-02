@@ -36,7 +36,9 @@ stock-rnn-prediction/
     │   └── trades_summary.csv
     │
     ├── scripts/                  # Shell- und Automatisierungsskripte
-    │   └── update_data.sh
+    │   └── update_data.sh          # Update der daten, shell script, ruft automatisch run_extract usw auf 
+    │   └── run_extract.py          # Hier werden die Aktien definiert welche geladen werden 
+    │   └── run_etl.sh          # geplantes Shell-skript das ETL System periodisch auf zu rufen 
     │
     ├── src/                      # Quellcode  // Geplante Struktur, better all in 1 utils.py function?
     │   ├── api/                  # API-Zugriff
