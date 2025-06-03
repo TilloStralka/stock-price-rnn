@@ -16,6 +16,11 @@ fi
 # Conda Environment aktivieren
 conda activate "$CONDA_ENV_NAME"
 
+# Ausgabe der Aktiven conda umgebung zur kontrolle 
+echo "Aktive Conda-Umgebung: $CONDA_DEFAULT_ENV"
+which python
+
+
 # In Projektverzeichnis wechseln
 cd "$PROJECT_PATH"
 

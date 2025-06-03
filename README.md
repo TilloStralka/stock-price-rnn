@@ -20,53 +20,49 @@
 ```text
 ------------
 stock-rnn-prediction/
-    ├── data/                               # Roh- und Verarbeitete Daten
-    │   ├── raw/                            # Unveränderte API-Daten als CSV
-    │   ├── processed/                      # Bereinigte, normalisierte Daten
-    │   └── predictions/                    # Modellvorhersagen
-    │
-    ├── notebooks/                          # Explorative Jupyter Notebooks
-    │   ├── collect_data_api.ipynb          # Notebook welches die daten von der API zieht 
-    │   └── analysis.ipynb                  # Geplantes exploratives notebook zur analyse der raw csv
-    │
-    ├── models/                   # Gespeicherte RNN-Modelle
-    │   └── rnn_model.h5
-    │
-    ├── reports/                  # Ergebnisse, Visualisierungen
-    │   └── trades_summary.csv
-    │
-    ├── scripts/                  # Shell- und Automatisierungsskripte
-    │   └── update_data.sh          # Update der daten, shell script, ruft automatisch run_extract usw auf 
-    │   └── run_extract.py          # Hier werden die Aktien definiert welche geladen werden 
-    │   └── run_etl.sh          # geplantes Shell-skript das ETL System periodisch auf zu rufen 
-    │
-    ├── src/                      # Quellcode  // Geplante Struktur, better all in 1 utils.py function?
-    │   ├── api/                  # API-Zugriff
-    │   │   └── fetch_data.py
-    │   │
-    │   ├── etl/                  # Extraktion, Transformation, Laden
-    │   │   ├── transform.py
-    │   │   └── load.py
-    │   │
-    │   ├── model/                # RNN-Modelle und Training
-    │   │   ├── rnn_model.py
-    │   │   └── train.py
-    │   │
-    │   ├── utils/                # Hilfsfunktionen, Logging, etc.
-    │   │   └── helpers.py
-    │   │
-    │   ├── evaluation/           # Auswertung: Buy/Sell-Strategie
-    │   │   └── strategy_eval.py
-    │   │
-    │   └── main.py               # Einstiegspunkt, orchestriert alles
-    │
-    ├── test/                     # Test functionen der einzelnen functionen
-    │   └── test_utils.py
-    │
-    ├── requirements.txt          # Abhängigkeiten
-    ├── README.md                 # Projektbeschreibung
-    ├── .env                      # Konfigurationsdateien
-    └── .gitignore
+│
+├── data/                             # All data used in the project
+│   ├── raw/                          # Untouched API data as CSV files
+│   ├── processed/                    # Cleaned and normalized data
+│   └── predictions/                  # Model-generated prediction results
+│
+├── notebooks/                        # Jupyter notebooks for exploration and prototyping
+│   ├── collect_data_api.ipynb        # Notebook for fetching stock data via API
+│   └── analysis.ipynb                # Planned notebook for EDA on raw CSVs
+│
+├── models/                           # Saved model weights and architectures
+│   └── rnn_model.h5                  # Trained RNN model file
+│
+├── reports/                          # Output results and visualizations
+│   └── trades_summary.csv            # Summary of backtested trades
+│
+├── scripts/                          # Shell scripts and ETL pipeline triggers
+│   ├── run_daily_etl.sh             # Daily cron-triggered ETL runner
+│   ├── run_etl.sh                   # Planned general ETL shell runner
+│   ├── run_extract.py               # Selects stocks and fetches raw data
+│   └── run_transform.py             # Transforms raw CSVs for RNN input
+│
+├── src/                              # Project source code
+│   ├── model/                        # RNN model definition and training
+│   │   ├── predict_model.py
+│   │   └── train_model.py
+│   │
+│   ├── evaluation/                   # Buy/sell strategy evaluation
+│   │   └── strategy_eval.py
+│   │
+│   └── utils.py                      # Utility functions (e.g., logging, configs)
+│
+├── logs/                             # Cronjob and script output logs
+│   └── cron_etl.log
+│
+├── test/                             # Unit tests for individual components
+│   └── test_utils.py
+│
+├── requirements.txt                  # Python package dependencies
+├── README.md                         # Project overview and instructions
+├── .env                              # Environment-specific settings (e.g. conda env, data paths)
+└── .gitignore                        # Files and folders to ignore in Git
+
 ```
 
 ==============================
@@ -88,11 +84,43 @@ The data comes from the api ... bla bla bla doku füllen . [Source](https://www.
     python -m venv env
     source env/bin/activate  # On Windows: env\Scripts\activate
     ```
+    oder das hier lieber mit Conda machen, weil ich habe ja unten eine conda umgebung angegeben 
 
 3. Install dependencies:
     ```bash
     pip install -r requirements.txt
     ```
+    
+4. Conda shell integration activation, if not already happend 
+    ```bash
+    conda init zsh
+    ```
+
+X. Ausführbarmachen des Shell scrips: 
+
+    ```bash 
+    chmod +x scripts/run_daily_etl.sh
+    ```
+
+x. Ausführen des Scripts aus dem Projekt ordner heraus, heist ich muss erstmal in den projekt ordner im terminal gehen, dann sollte es klappen 
+
+x. Hinweis das in dotenv datei die 
+# Pfade und umgebungs namen stehen sollten 
+CONDA_ENV_NAME=DS
+CONDA_PYTHON_PATH=/opt/anaconda3/envs/DS/bin/python
+PROJECT_PATH=/Users/tillo/Repositorys/stock-price-rnn
+
+x. Hinzufügen zum Chronjob, damit die aktualisierung der daten jeden tag passiert 
+    Die log datein, ob etwas passiert, wie erfolgreich das script war und wann es gestartet ist, stehen
+    im ordner logs 
+
+    cronjob öffnen und hinzufügen - hier bitte den eigenen projekt pfad einfügen
+    bedeutet um 8uhr morgens täglich wird das script ausgeführt / logged die ausgaben vom etl prozess 
+```bash
+    crontab -e
+    0 8 * * * /bin/bash /["path to your repository"]/stock-price-rnn/scripts/run_daily_etl.sh >> /["path to your repository"]/stock-price-rnn/logs/cron_etl.log 2>&1
+
+
 
 ==============================
 

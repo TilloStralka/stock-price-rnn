@@ -28,8 +28,7 @@ def main():
         return
 
     # Define stocks and target folder
-    stock_list = ["AAPL"]
-    # , "MSFT", "GOOGL", "MBG.DEX"]
+    stock_list = ["AAPL", "MSFT", "GOOGL", "MBG.DEX"]
     data_folder = Path(__file__).resolve().parents[1] / "data" / "raw"
 
     # Create folder if it doesn't exist
