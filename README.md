@@ -75,31 +75,50 @@ The data comes from the api ... bla bla bla doku füllen . [Source](https://www.
 ## **4. Installation**
 1. Clone the repository:
     ```bash
-    git clone https://https://github.com/TilloStralka/stock-price-rnn.git
+    git clone https://github.com/TilloStralka/stock-price-rnn.git
     cd stock-price-rnn
+
     ```
 
 2. Create a virtual environment and activate it:
     ```bash
-    python -m venv env
-    source env/bin/activate  # On Windows: env\Scripts\activate
+    conda create -n stock_rnn_env python=3.10
+    conda activate stock_rnn_env
     ```
-    oder das hier lieber mit Conda machen, weil ich habe ja unten eine conda umgebung angegeben 
 
 3. Install dependencies:
     ```bash
     pip install -r requirements.txt
     ```
     
-4. Conda shell integration activation, if not already happend 
+4. Conda shell integration (if not yet enabled)
     ```bash
-    conda init zsh
+    conda init zsh # or: conda init bash
     ```
 
-X. Ausführbarmachen des Shell scrips: 
+5. Make the daily ETL shell script executable
 
     ```bash 
     chmod +x scripts/run_daily_etl.sh
+    ```
+6. Configure .env
+    Create a .env file with your environment settings:
+
+    CONDA_ENV_NAME=stock_rnn_env
+    CONDA_PYTHON_PATH=/opt/anaconda3/envs/stock_rnn_env/bin/python
+    PROJECT_PATH=/Users/yourname/path/to/stock-price-rnn
+
+
+7. Daily Automation via Cron
+    To run the ETL pipeline every day at 8:00 AM, follow these steps:
+
+    Open your crontab:
+    ```bash
+    crontab -e
+    ````
+    Add the following line (adjust the path as needed):
+    ```bash 
+    0 8 * * * /bin/bash /Users/yourname/path/to/stock-price-rnn/scripts/run_daily_etl.sh >> /Users/yourname/path/to/stock-price-rnn/logs/cron_etl.log 2>&1
     ```
 
 x. Ausführen des Scripts aus dem Projekt ordner heraus, heist ich muss erstmal in den projekt ordner im terminal gehen, dann sollte es klappen 
