@@ -121,26 +121,7 @@ The data comes from the api ... bla bla bla doku füllen . [Source](https://www.
     0 8 * * * /bin/bash /Users/yourname/path/to/stock-price-rnn/scripts/run_daily_etl.sh >> /Users/yourname/path/to/stock-price-rnn/logs/cron_etl.log 2>&1
     ```
 
-x. Ausführen des Scripts aus dem Projekt ordner heraus, heist ich muss erstmal in den projekt ordner im terminal gehen, dann sollte es klappen 
-
-x. Hinweis das in dotenv datei die 
-# Pfade und umgebungs namen stehen sollten 
-CONDA_ENV_NAME=DS
-CONDA_PYTHON_PATH=/opt/anaconda3/envs/DS/bin/python
-PROJECT_PATH=/Users/tillo/Repositorys/stock-price-rnn
-
-x. Hinzufügen zum Chronjob, damit die aktualisierung der daten jeden tag passiert 
-    Die log datein, ob etwas passiert, wie erfolgreich das script war und wann es gestartet ist, stehen
-    im ordner logs 
-
-    cronjob öffnen und hinzufügen - hier bitte den eigenen projekt pfad einfügen
-    bedeutet um 8uhr morgens täglich wird das script ausgeführt / logged die ausgaben vom etl prozess 
-```bash
-    crontab -e
-    0 8 * * * /bin/bash /["path to your repository"]/stock-price-rnn/scripts/run_daily_etl.sh >> /["path to your repository"]/stock-price-rnn/logs/cron_etl.log 2>&1
-
-
-
+    
 ==============================
 
 ## **5. Usage**
