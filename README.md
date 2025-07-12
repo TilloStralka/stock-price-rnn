@@ -20,6 +20,7 @@
 ```text
 ------------
 stock-rnn-prediction/
+
 │
 ├── data/                             # All data used in the project
 │   ├── raw/                          # Untouched API data as CSV files

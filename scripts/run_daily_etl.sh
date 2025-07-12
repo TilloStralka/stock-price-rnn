@@ -1,8 +1,12 @@
 #!/bin/bash
 
-# Projektpfad und Conda-Umgebung aus .env laden
+# Ordner des Skripts selbst ermitteln (z.B. scripts/)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# .env Datei aus dem Projektroot laden und Conda-Umgebung laden 
 set -o allexport
-source ./.env
+source "$PROJECT_ROOT/.env" || { echo "ERROR: .env file not found!"; exit 1; }
 set +o allexport
 
 # Conda initialisieren
@@ -22,13 +26,11 @@ which python
 
 
 # In Projektverzeichnis wechseln
-cd "$PROJECT_PATH"
+cd "$PROJECT_PATH" || { echo "ERROR: Projektverzeichnis nicht gefunden!"; exit 1; }
 
 # Python-Skript starten mit optionalem Python-Pfad aus .env (falls gesetzt)
-if [ -n "$CONDA_PYTHON_PATH" ]; then
-  PYTHON_BIN="$CONDA_PYTHON_PATH"
-else
-  PYTHON_BIN="python"
-fi
+# Python-Binary festlegen
+PYTHON_BIN="${CONDA_PYTHON_PATH:-python}"
 
+# Python-Skript ausführen
 PYTHONPATH=. "$PYTHON_BIN" scripts/run_extract.py

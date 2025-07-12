@@ -1,0 +1,58 @@
+.
+├── .DS_Store
+├── .env
+├── .gitignore
+├── .pytest_cache
+│   ├── .gitignore
+│   ├── CACHEDIR.TAG
+│   ├── README.md
+│   └── v
+│       └── cache
+│           ├── lastfailed
+│           ├── nodeids
+│           └── stepwise
+├── LICENSE
+├── README.md
+├── data
+│   ├── .DS_Store
+│   ├── predictions
+│   ├── processed
+│   └── raw
+│       ├── AAPL_last_1000_days.csv
+│       ├── GOOGL_last_1000_days.csv
+│       ├── MBG.DEX_last_1000_days.csv
+│       └── MSFT_last_1000_days.csv
+├── logs
+│   └── cron_etl.log
+├── models
+│   ├── .DS_Store
+│   └── .gitkeep
+├── notebooks
+│   ├── .DS_Store
+│   ├── .gitkeep
+│   ├── collect_data_api.ipynb
+│   ├── fetch_data.ipynb
+│   └── transform_data.ipynb
+├── repo_struktur.txt
+├── reports
+├── requirements.txt
+├── scripts
+│   ├── __init__.py
+│   ├── run_daily_etl.sh
+│   └── run_extract.py
+├── src
+│   ├── .DS_Store
+│   ├── __init__.py
+│   ├── features
+│   │   ├── __init__.py
+│   │   └── build_features.py
+│   ├── models
+│   │   ├── .DS_Store
+│   │   ├── __init__.py
+│   │   ├── predict_model.py
+│   │   └── train_model.py
+│   └── utils.py
+└── test
+    └── test_utils.py
+
+17 directories, 39 files
